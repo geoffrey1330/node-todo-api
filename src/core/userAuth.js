@@ -29,7 +29,7 @@ function decodeJwtToken(req) {
   if (!requestHeaderAuthorization) {
       throwError('Authentication Failed. Please login', 401);
   }
-
+  
   const [authBearer, token] = requestHeaderAuthorization.split(' ');
 
   if (authBearer !== 'Bearer') {
@@ -43,6 +43,7 @@ function decodeJwtToken(req) {
 }
 
 function verifyToken(token) {
+  console.log(token);
   return jwt.verify(token, JWT_SECRETE_KEY, { expiresIn: TOKEN_DURATION });
 }
 
