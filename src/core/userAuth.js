@@ -43,7 +43,7 @@ function decodeJwtToken(req) {
 }
 
 function verifyToken(token) {
-  console.log(token);
+  
   return jwt.verify(token, JWT_SECRETE_KEY, { expiresIn: TOKEN_DURATION });
 }
 
