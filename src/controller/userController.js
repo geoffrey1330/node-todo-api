@@ -9,7 +9,6 @@ exports.signup = async (req, res) => {
         const newUser = await new User(req.body).signup();
         const token = await generateAuthToken({ 
             userId: newUser._id, 
-            role: newUser.role,
         })
        
         return success(res, { newUser, token });
@@ -24,7 +23,6 @@ exports.login = async (req, res) => {
         const userDetails = await new User(req.body).login();
         const token = await generateAuthToken({ 
             userId: userDetails._id, 
-            userType: userDetails.userType,
          });
         return success(res, { userDetails, token });
     } catch (err) {
