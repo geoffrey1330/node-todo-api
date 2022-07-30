@@ -4,7 +4,6 @@ const {throwError} = require("../utils/handleErrors");
 const bcrypt = require("bcrypt");
 const util = require("../utils/util");
 const {validateParameters} = require('../utils/util');
-const {getCachedData} = require('./Redis');
 
 class User {
     constructor(data) {
@@ -31,18 +30,7 @@ class User {
     }
 
     async signup() {
-        const otp = this.data.otp;
-        if (!otp) {
-            throwError('OTP Required To Complete Signup')
-        }
-        const cachedOTP = await getCachedData(this.data.email);
-
-        if (!cachedOTP) {
-            throwError('OTP Code Expired');
-        }
-        else if (cachedOTP !== otp) {
-            throwError('Invalid OTP')
-        }
+       
 
         const user = new UserSchema(this.data);
         let validationError = user.validateSync();

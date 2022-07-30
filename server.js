@@ -11,6 +11,7 @@ const { PORT } = require("./src/core/config");
 // Routers
 const baseRouter = require("./src/router");
 const todoRouter = require("./src/router/todoRouter");
+const userRouter = require("./src/router/userRouter");
 
 // App Init
 const app = express();
@@ -23,6 +24,7 @@ app.use(morgan("tiny"));
 
 // Router Middleware
 app.use("/", baseRouter);
+app.use("/api", userRouter);
 app.use("/api", todoRouter);
 
 app.listen(PORT, () =>
