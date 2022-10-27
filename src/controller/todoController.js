@@ -2,7 +2,6 @@ const { error, success } = require("../utils/baseController");
 const { logger } = require("../utils/logger");
 const Todo = require("../service/todo");
 
-
 exports.create = async (req, res) => {
     try {
         const { name, thingsTodo, time } = req.body;

@@ -3,7 +3,6 @@ const { generateAuthToken } = require("../core/userAuth");
 const { logger } = require("../utils/logger");
 const User = require("../service/User");
 
-
 exports.signup = async (req, res) => {
     try {
         const newUser = await new User(req.body).signup();
